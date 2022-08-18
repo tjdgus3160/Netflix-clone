@@ -5,6 +5,7 @@ import movieTrailer from "movie-trailer";
 import { axios } from "@api";
 import { imageUrl } from "@utils";
 import "./style.css";
+import { Movie } from "@types";
 
 interface Props {
   title: string;
@@ -13,7 +14,7 @@ interface Props {
 }
 
 function Row({ title, fetchUrl, isLargeRow }: Props) {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [trailerUrl, setTrailerUrl] = useState("");
 
   useEffect(() => {
@@ -34,11 +35,11 @@ function Row({ title, fetchUrl, isLargeRow }: Props) {
     },
   };
 
-  const handleClick = (movie: any) => {
+  const handleClick = (movie: Movie) => {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.name || "")
+      movieTrailer(movie.name || movie.title || "")
         .then((url: string) => {
           // https://www.youtube.com/watch?v=trailerUrl
           const urlParams = new URLSearchParams(new URL(url).search);
@@ -56,7 +57,7 @@ function Row({ title, fetchUrl, isLargeRow }: Props) {
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
-        {movies?.map((movie: any) => (
+        {movies?.map((movie: Movie) => (
           <img
             className={`row__poster ${isLargeRow ? "row__posterLarge" : ""}`}
             key={movie.id}
