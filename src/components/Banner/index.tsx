@@ -5,7 +5,7 @@ import "./style.css";
 const base_url = "https://image.tmdb.org/t/p/original/";
 
 function Banner() {
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState<any>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -18,8 +18,8 @@ function Banner() {
     fetchData();
   }, []);
 
-  function truncate(str, n) {
-    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  function truncate(str: string, n: number) {
+    return str?.length > n ? str.substring(0, n - 1) + "..." : str;
   }
 
   return (

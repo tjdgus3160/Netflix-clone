@@ -6,7 +6,13 @@ import movieTrailer from "movie-trailer";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 
-function Row({ title, fetchUrl, isLargeRow }) {
+interface Props {
+  title: string;
+  fetchUrl: string;
+  isLargeRow?: boolean;
+}
+
+function Row({ title, fetchUrl, isLargeRow }: Props) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState("");
 
@@ -28,18 +34,21 @@ function Row({ title, fetchUrl, isLargeRow }) {
     },
   };
 
-  const handleClick = (movie) => {
+  const handleClick = (movie: any) => {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
       movieTrailer(movie?.name || "")
-        .then((url) => {
+        .then((url: string) => {
           // https://www.youtube.com/watch?v=trailerUrl
           const urlParams = new URLSearchParams(new URL(url).search);
+          const v = urlParams.get("v");
 
-          setTrailerUrl(urlParams.get("v"));
+          if (v) {
+            setTrailerUrl(v);
+          }
         })
-        .catch((error) => console.log(error));
+        .catch((error: Error) => console.log(error));
     }
   };
 
@@ -47,7 +56,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
     <div className="row">
       <h2>{title}</h2>
       <div className="row__posters">
-        {movies?.map((movie) => (
+        {movies?.map((movie: any) => (
           <img
             className={`row__poster ${isLargeRow ? "row__posterLarge" : ""}`}
             key={movie.id}

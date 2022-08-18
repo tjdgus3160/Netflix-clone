@@ -5,12 +5,12 @@ function Nav() {
   const [show, handleShow] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      handleShow(window.scrollY > 100);
-    });
+    const f = () => handleShow(window.scrollY > 100);
+
+    window.addEventListener("scroll", f);
 
     return () => {
-      window.removeEventListener("scroll", null);
+      window.removeEventListener("scroll", f);
     };
   }, []);
 

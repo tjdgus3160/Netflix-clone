@@ -3,6 +3,7 @@ import Row from "./components/Row";
 import { requests } from "./api";
 import Banner from "./components/Banner";
 import Nav from "./components/Nav";
+import React from "react";
 
 function App() {
   return (
