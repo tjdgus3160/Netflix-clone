@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+require("dotenv").config();
 
 module.exports = {
   entry: "./src/index.tsx", // 번들링 시작 위치
@@ -33,6 +35,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html", // 템플릿 위치
       favicon: "./public/favicon.ico",
+    }),
+    new webpack.DefinePlugin({
+      "process.env.API_KEY": JSON.stringify(process.env.API_KEY),
+      "process.env.BASE_URL": JSON.stringify(process.env.BASE_URL),
+      "process.env.IMAGE_BASE_URL": JSON.stringify(process.env.IMAGE_BASE_URL),
     }),
   ],
   devServer: {

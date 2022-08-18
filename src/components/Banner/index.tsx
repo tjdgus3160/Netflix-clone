@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { truncate } from "@utils";
+import { imageUrl, truncate } from "@utils";
 import { axios, requests } from "@api";
 import "./style.css";
-
-const base_url = "https://image.tmdb.org/t/p/original/";
 
 function Banner() {
   const [movie, setMovie] = useState<any>(null);
@@ -24,7 +22,7 @@ function Banner() {
       className="banner"
       style={{
         backgroundSize: "cover",
-        backgroundImage: `url("${base_url}${movie?.backdrop_path}")`,
+        backgroundImage: `url("${imageUrl(movie?.backdrop_path)}")`,
         backgroundPosition: "center center",
       }}
     >

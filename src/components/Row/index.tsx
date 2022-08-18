@@ -3,9 +3,8 @@ import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
 
 import { axios } from "@api";
+import { imageUrl } from "@utils";
 import "./style.css";
-
-const base_url = "https://image.tmdb.org/t/p/original/";
 
 interface Props {
   title: string;
@@ -62,7 +61,7 @@ function Row({ title, fetchUrl, isLargeRow }: Props) {
             className={`row__poster ${isLargeRow ? "row__posterLarge" : ""}`}
             key={movie.id}
             onClick={() => handleClick(movie)}
-            src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
+            src={imageUrl(isLargeRow ? movie.poster_path : movie.backdrop_path)}
             alt={movie.name}
           />
         ))}

@@ -2,7 +2,7 @@ import axios from "axios";
 
 /** base url to make requests to the TMDB(The Movie DataBase) */
 const instance = axios.create({
-  baseURL: "https://api.themoviedb.org/3",
+  baseURL: process.env.BASE_URL,
 });
 
 export default instance;
