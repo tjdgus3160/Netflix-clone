@@ -20,7 +20,13 @@
     "inlineSourceMap": true /* 분리된 파일을 가지고 있는 대신, 단일 파일을 소스 맵과 가지고 있을 지 여부 */,
     /* 추가적 옵션 */
     "skipLibCheck": true /* 정의 파일의 타입 확인을 건너 뛸 지 여부 */,
-    "forceConsistentCasingInFileNames": true /* 같은 파일에 대한 일관되지 않은 참조를 허용하지 않을 지 여부 */
+    "forceConsistentCasingInFileNames": true /* 같은 파일에 대한 일관되지 않은 참조를 허용하지 않을 지 여부 */,
+    "rootDir": ".",
+    "paths": {
+      "@api": ["src/api"],
+      "@components/*": ["src/components/*"],
+      "@utils": ["src/utils"]
+    }
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"],

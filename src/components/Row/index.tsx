@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { axios } from "../../api";
-import "./style.css";
 import YouTube from "react-youtube";
 import movieTrailer from "movie-trailer";
+
+import { axios } from "@api";
+import "./style.css";
 
 const base_url = "https://image.tmdb.org/t/p/original/";
 

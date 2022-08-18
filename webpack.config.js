@@ -23,6 +23,11 @@ module.exports = {
   resolve: {
     modules: [path.join(__dirname, "src"), "node_modules"], // 모듈 위치
     extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      "@api": path.resolve(__dirname, "./src/api"),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

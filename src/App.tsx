@@ -1,9 +1,10 @@
-import "./App.css";
-import Row from "./components/Row";
-import { requests } from "./api";
-import Banner from "./components/Banner";
-import Nav from "./components/Nav";
 import React from "react";
+import Row from "@components/Row";
+import Banner from "@components/Banner";
+import Nav from "@components/Nav";
+import "./App.css";
+
+import { requests } from "@api";
 
 function App() {
   return (
