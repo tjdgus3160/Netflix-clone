@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./style.css";
 
 function Nav() {
-  const [show, handleShow] = useState(false);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const f = () => handleShow(window.scrollY > 100);
+    const handleScroll = () => setShow(window.scrollY > 100);
 
-    window.addEventListener("scroll", f);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", f);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
